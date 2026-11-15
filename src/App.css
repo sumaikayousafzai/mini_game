@@ -70,3 +70,7 @@
     background: #542080;
     transform: translateY(-2px);
 }
+body {
+    background: linear-gradient(135deg, #e8d5ff, #c9a7eb);
+    min-height: 100vh;
+}
