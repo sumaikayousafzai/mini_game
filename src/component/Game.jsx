@@ -1,17 +1,28 @@
 import {useState} from "react";
 function Game(){
   const [number,setnumber]= useState("");
+  const [message,setmessage]= useState("");
+  const[attempts,setAttempts]=useState(0)
+
 function handleGuess(){
-  if(number==7){
-    alert("You Won");
+   setAttempts(attempts + 1)
+  if(number==40){
+    setmessage("🎉 you won");
   }
-  else if( number< 7){
-alert ("Too low");
+
+  else if( number< 40){
+setmessage("Too Low 😢");
   }
 
 else {
-    alert("Too High!");
+    setmessage("Too High 😱");
 }
+}
+
+function resetGame() {
+    setnumber("");
+    setmessage("");
+    setAttempts(0);
 }
  
   return<>
@@ -26,13 +37,16 @@ else {
   </p>
 
   <div className="input-box">
-<label className="input-label">enter the number</label>
+<label className="input-label">Enter the number</label>
+<p> Attempts :{attempts}</p>
 
   <input className="game-input" type="number" 
   onChange ={(e)=> setnumber(e.target.value)}
   /></div>
   <p>Your Guess: {number}</p>
-  <button className="game-btn"onClick={handleGuess} >Guess!!</button>
+  <h2>{message}</h2>
+  <button className="game-btn"onClick={handleGuess} >Guess!!</button><br/> <br/>
+    <button className="game-btn"onClick={resetGame} >Play again!!</button>
   </div>
   </>
 }
